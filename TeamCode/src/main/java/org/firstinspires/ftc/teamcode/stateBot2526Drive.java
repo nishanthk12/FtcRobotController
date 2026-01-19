@@ -22,7 +22,7 @@ public class stateBot2526Drive {
         ServoConFront = hwMap.get(CRServo.class, "servo_con_front_transfer");
         ServoConIntake = hwMap.get(CRServo.class, "intakeservo");
         ServoConTurret = hwMap.get(CRServo.class, "servo_con_turret");
-        ServoConHood = hwMap.get(CRServo.class, "servo_con_hood")
+        ServoConHood = hwMap.get(CRServo.class, "servo_con_hood");
 
         FrontRight.setDirection(DcMotor.Direction.REVERSE);
         BackRight.setDirection(DcMotor.Direction.REVERSE);
