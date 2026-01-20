@@ -25,7 +25,7 @@ public class SensorPinpointDriveToPoint extends LinearOpMode {
     DcMotor rightBackDrive;
 
     GoBildaPinpointDriver odo; // Declare OpMode member for the Odometry Computer
-    DriveToPoint nav = new DriveToPoint(this); //OpMode member for the point-to-point navigation class
+    DriveToPoint nav = new DriveToPoint(); //OpMode member for the point-to-point navigation class
 
     enum StateMachine {
         WAITING_FOR_START,

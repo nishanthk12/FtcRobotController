@@ -59,7 +59,7 @@ public class DriveToPoint {
     private final ElapsedTime holdTimer = new ElapsedTime();
     private final ElapsedTime PIDTimer = new ElapsedTime();
 
-    private LinearOpMode myOpMode; //todo: consider if this is required
+    //private LinearOpMode myOpMode; //todo: consider if this is required
 
     private final PIDLoop xPID = new PIDLoop();
     private final PIDLoop yPID = new PIDLoop();
@@ -69,9 +69,12 @@ public class DriveToPoint {
 
     private DriveType selectedDriveType = DriveType.MECANUM;
 
+    /*
     public DriveToPoint(LinearOpMode opmode){
         myOpMode = opmode;
     }
+
+     */
 
     public void setDriveType(DriveType driveType){
         selectedDriveType = driveType;

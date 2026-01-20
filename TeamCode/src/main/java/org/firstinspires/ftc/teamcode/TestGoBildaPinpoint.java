@@ -16,6 +16,7 @@ import java.util.Locale;
 
 
 @TeleOp
+@Disabled
 public class TestGoBildaPinpoint extends LinearOpMode  {
 
     GoBildaPinpointDriver odo;
