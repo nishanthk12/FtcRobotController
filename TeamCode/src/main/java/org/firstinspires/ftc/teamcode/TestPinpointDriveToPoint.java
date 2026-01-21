@@ -21,7 +21,7 @@ public class TestPinpointDriveToPoint extends LinearOpMode{
     DcMotor FrontLeft, FrontRight, BackLeft, BackRight;
 
     GoBildaPinpointDriver odo;
-    DriveToPoint nav = new DriveToPoint();
+    TestDriveToPoint nav = new TestDriveToPoint();
 
     enum StateMachineTest {
         WAITING_FOR_START,
@@ -29,12 +29,10 @@ public class TestPinpointDriveToPoint extends LinearOpMode{
         DRIVE_TO_TARGET_1
     }
 
-    static final Pose2D TARGET_1 = new Pose2D(DistanceUnit.MM,2000,20,AngleUnit.DEGREES,0);
+    static final Pose2D TARGET_1 = new Pose2D(DistanceUnit.MM,2000,0,AngleUnit.DEGREES,0);
 
     @Override
     public void runOpMode() {
-
-
 
 
         FrontLeft = hardwareMap.get(DcMotor.class, "front_left");
@@ -59,13 +57,13 @@ public class TestPinpointDriveToPoint extends LinearOpMode{
         odo = hardwareMap.get(GoBildaPinpointDriver.class, "pinpoint");
         odo.setOffsets(-88.9, -190.5, DistanceUnit.MM); //these are tuned for 3110-0002-0001 Product Insight #1
         odo.setEncoderResolution(GoBildaPinpointDriver.GoBildaOdometryPods.goBILDA_4_BAR_POD);
-        odo.setEncoderDirections(GoBildaPinpointDriver.EncoderDirection.FORWARD, GoBildaPinpointDriver.EncoderDirection.FORWARD);
+        odo.setEncoderDirections(GoBildaPinpointDriver.EncoderDirection.REVERSED, GoBildaPinpointDriver.EncoderDirection.FORWARD);
 
 
         //odo.recalibrateIMU();
         odo.resetPosAndIMU();
 
-        nav.setDriveType(DriveToPoint.DriveType.MECANUM);
+        //nav.setDriveType(TestDriveToPoint.DriveType.MECANUM);
 
         StateMachineTest stateMachinetest;
         stateMachinetest = StateMachineTest.WAITING_FOR_START;
@@ -105,10 +103,10 @@ public class TestPinpointDriveToPoint extends LinearOpMode{
             }
 
             //nav calculates the power to set to each motor in a mecanum or tank drive. Use nav.getMotorPower to find that value.
-            FrontLeft.setPower(nav.getMotorPower(DriveToPoint.DriveMotor.LEFT_FRONT));
-            FrontRight.setPower(nav.getMotorPower(DriveToPoint.DriveMotor.RIGHT_FRONT));
-            BackLeft.setPower(nav.getMotorPower(DriveToPoint.DriveMotor.LEFT_BACK));
-            BackRight.setPower(nav.getMotorPower(DriveToPoint.DriveMotor.RIGHT_BACK));
+            FrontLeft.setPower(nav.getMotorPower(TestDriveToPoint.DriveMotor.LEFT_FRONT));
+            FrontRight.setPower(nav.getMotorPower(TestDriveToPoint.DriveMotor.RIGHT_FRONT));
+            BackLeft.setPower(nav.getMotorPower(TestDriveToPoint.DriveMotor.LEFT_BACK));
+            BackRight.setPower(nav.getMotorPower(TestDriveToPoint.DriveMotor.RIGHT_BACK));
 
             telemetry.addData("current state:",stateMachinetest);
 
