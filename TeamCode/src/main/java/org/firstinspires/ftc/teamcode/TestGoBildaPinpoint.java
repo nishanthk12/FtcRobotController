@@ -14,7 +14,7 @@ import java.util.Locale;
 
 
 
-
+@Disabled
 @TeleOp
 public class TestGoBildaPinpoint extends LinearOpMode  {
 
