@@ -36,15 +36,10 @@ public class TestAutoMecanum extends OpMode {
     @Override
     public void start() {
 
-        drive(0.25, 0.0, 0.0);
+        driveAuto(0.25, 0.0, 0.0);
         try { Thread.sleep(2000); } catch (Exception e) {}
-        drive(-0.25, 0.0, 0.0);
+        driveAuto(-0.25, 0.0, 0.0);
         try { Thread.sleep(2000); } catch (Exception e) {}
-        drive(0.0, 0.10, 0.0);
-        try { Thread.sleep(2000); } catch (Exception e) {}
-        drive(0.0, -0.10, 0.0);
-        try { Thread.sleep(2000); } catch (Exception e) {}
-        drive(0.0, 0.0, 0.0);
 
     }
 
@@ -55,10 +50,10 @@ public class TestAutoMecanum extends OpMode {
 
     @Override
     public void stop() {
-        drive(0.0, 0.0, 0.0);
+        driveAuto(0.0, 0.0, 0.0);
     }
 
-    public void drive(double forward, double strafe, double rotate) {
+    public void driveAuto(double forward, double strafe, double rotate) {
         double FrontLeftPower = forward - strafe - rotate;
         double FrontRightPower = forward + strafe + rotate;
         //double BackLeftPower = -forward - strafe + rotate;
