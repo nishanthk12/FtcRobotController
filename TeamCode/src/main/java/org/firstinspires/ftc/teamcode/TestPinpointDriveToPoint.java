@@ -14,7 +14,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.Pose2D;
 
 import java.util.Locale;
 
-
+@Disabled
 @Autonomous
 public class TestPinpointDriveToPoint extends LinearOpMode{
 

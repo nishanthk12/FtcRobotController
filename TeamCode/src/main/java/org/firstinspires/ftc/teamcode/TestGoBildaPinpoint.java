@@ -16,11 +16,10 @@ import java.util.Locale;
 
 
 @TeleOp
-@Disabled
 public class TestGoBildaPinpoint extends LinearOpMode  {
 
     GoBildaPinpointDriver odo;
-    double oldTime = 0;
+
 
     @Override
     public void runOpMode() {
@@ -29,7 +28,8 @@ public class TestGoBildaPinpoint extends LinearOpMode  {
 
         odo.setOffsets(-88.9, -190.5, DistanceUnit.MM);
         odo.setEncoderResolution(GoBildaPinpointDriver.GoBildaOdometryPods.goBILDA_4_BAR_POD);
-        odo.setEncoderDirections(GoBildaPinpointDriver.EncoderDirection.FORWARD, GoBildaPinpointDriver.EncoderDirection.FORWARD);
+        odo.setEncoderDirections(GoBildaPinpointDriver.EncoderDirection.FORWARD,
+                GoBildaPinpointDriver.EncoderDirection.REVERSED);
         odo.resetPosAndIMU();
 
         telemetry.addData("Status", "Initialized");
@@ -55,28 +55,20 @@ public class TestGoBildaPinpoint extends LinearOpMode  {
                 odo.recalibrateIMU(); //recalibrates the IMU without resetting position
             }
 
-            double newTime = getRuntime();
-            double loopTime = newTime-oldTime;
-            double frequency = 1/loopTime;
-            oldTime = newTime;
+
 
             Pose2D pos = odo.getPosition();
-            String data = String.format(Locale.US, "{X: %.3f, Y: %.3f, H: %.3f}", pos.getX(DistanceUnit.MM), pos.getY(DistanceUnit.MM), pos.getHeading(AngleUnit.DEGREES));
+            String data = String.format(Locale.US, "{X: %.3f, Y: %.3f, H: %.3f}",
+                    pos.getX(DistanceUnit.MM),
+                    pos.getY(DistanceUnit.MM),
+                    pos.getHeading(AngleUnit.DEGREES));
             telemetry.addData("Position", data);
-
-            String velocity = String.format(Locale.US,"{XVel: %.3f, YVel: %.3f, HVel: %.3f}", odo.getVelX(DistanceUnit.MM), odo.getVelY(DistanceUnit.MM), odo.getHeadingVelocity(UnnormalizedAngleUnit.DEGREES));
-            telemetry.addData("Velocity", velocity);
 
             telemetry.addData("Status", odo.getDeviceStatus());
 
-            telemetry.addData("Pinpoint Frequency", odo.getFrequency()); //prints/gets the current refresh rate of the Pinpoint
-
-            telemetry.addData("REV Hub Frequency: ", frequency); //prints the control system refresh rate
             telemetry.update();
 
         }
-
-
 
     }
 }
