@@ -40,6 +40,12 @@ public class TestAutoMecanum extends OpMode {
         try { Thread.sleep(2000); } catch (Exception e) {}
         driveAuto(-0.25, 0.0, 0.0);
         try { Thread.sleep(2000); } catch (Exception e) {}
+        driveAuto(0.0, 0.25, 0.0);
+        try { Thread.sleep(2000); } catch (Exception e) {}
+        driveAuto(0.0, -0.25, 0.0);
+        try { Thread.sleep(2000); } catch (Exception e) {}
+        driveAuto(0.0, 0.0, 0.0);
+        try { Thread.sleep(2000); } catch (Exception e) {}
 
     }
 
