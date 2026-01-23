@@ -4,8 +4,11 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 
-@Autonomous
+
+//@Autonomous
+@Disabled
 public class TestAutoMecanum extends OpMode {
 
     private DcMotor FrontLeft, FrontRight, BackLeft, BackRight;

@@ -14,7 +14,7 @@ import java.util.Locale;
 
 
 
-@Disabled
+//@Disabled
 @TeleOp
 public class TestGoBildaPinpoint extends LinearOpMode  {
 
@@ -29,7 +29,7 @@ public class TestGoBildaPinpoint extends LinearOpMode  {
         odo.setOffsets(-88.9, -190.5, DistanceUnit.MM);
         odo.setEncoderResolution(GoBildaPinpointDriver.GoBildaOdometryPods.goBILDA_4_BAR_POD);
         odo.setEncoderDirections(GoBildaPinpointDriver.EncoderDirection.FORWARD,
-                GoBildaPinpointDriver.EncoderDirection.REVERSED);
+                GoBildaPinpointDriver.EncoderDirection.FORWARD);
         odo.resetPosAndIMU();
 
         telemetry.addData("Status", "Initialized");
