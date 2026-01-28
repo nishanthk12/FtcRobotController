@@ -1,8 +1,10 @@
 package org.firstinspires.ftc.teamcode.ftcDecode;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
+@Disabled
 @TeleOp
 public class DecodeTeleOPNishanth extends OpMode {
 
@@ -10,7 +12,7 @@ public class DecodeTeleOPNishanth extends OpMode {
 
     double forward, strafe, rotate;
     double IntakePower = 1.0;
-    double TurretPower = 0.47;
+    double TurretPower = 0.4;
 
     double rightStick;
     double clockwise = 0;
@@ -41,12 +43,12 @@ public class DecodeTeleOPNishanth extends OpMode {
         serviceHelper.SetServoConFrontPower(-0.8);
 
         if (gamepad2.left_bumper) {
-            TurretPower = 0.625;
+            TurretPower = 0.5;
             telemetry.addData("long range", TurretPower);
         }
 
         if (gamepad2.right_bumper) {
-            TurretPower = 0.75;
+            TurretPower = 0.4;
             telemetry.addData("mid range", TurretPower);
         }
 
@@ -85,14 +87,12 @@ public class DecodeTeleOPNishanth extends OpMode {
             serviceHelper.SetBackFeederPower(0.8);
         }
 
-        if (gamepad2.left_trigger > 0.05) {
+        if (gamepad1.left_trigger > 0.05) {
             serviceHelper.SetIntakePower(0.0);
             serviceHelper.SetServoConIntakePower(0.0);
         }
-
-        else if (gamepad2.right_trigger > 0.05) {
-            serviceHelper.SetIntakePower(0.8);
-            serviceHelper.SetServoConIntakePower(-0.8);
+        else {
+            serviceHelper.SetIntakePower(0.0);
         }
     }
 
